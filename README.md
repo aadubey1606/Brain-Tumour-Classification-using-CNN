@@ -1,115 +1,113 @@
-# Brain Tumour Classification Using CNN
+# Brain Tumour Classification Using CNN (ResNet-18)
 
 ## Overview
 
-This project implements a Convolutional Neural Network (CNN) to classify brain MRI images into different categories based on the dataset used for training. The model learns spatial features from MRI scans to identify patterns associated with different brain tumour categories.
+This project uses a Convolutional Neural Network (CNN), based on the ResNet-18 architecture, to classify brain MRI images into the categories supported by the trained model.
 
-The project demonstrates the application of deep learning and computer vision in medical image classification.
+The project uses a curated brain tumour dataset hosted on Hugging Face. The trained model checkpoint is hosted separately on Hugging Face, allowing users to run the demonstration notebook without downloading the entire dataset or training the model from scratch.
 
-## Objectives
+The project includes a Google Colab demonstration notebook where users can load the trained model, provide a brain MRI image, and observe the model's prediction.
 
-- Develop a CNN-based image classification model for brain MRI scans.
-- Train the model on the brain MRI dataset used in the project.
-- Predict the category of an input MRI image.
-- Explore the application of deep learning techniques in medical image analysis.
+## Quick Start — Run the Demo
+
+**The easiest way to test the project is through Google Colab.** No local Python environment or GPU setup is required.
+
+### Step 1: Open the Demo Notebook
+
+[**Open CNN Brain Tumour Classification Demo in Google Colab**](https://colab.research.google.com/github/aadubey1606/Brain-Tumour-Classification-using-CNN/blob/main/CNN_BT_DEMO.ipynb)
+
+If the link does not open, you can access the notebook through the [GitHub repository](https://github.com/aadubey1606/Brain-Tumour-Classification-using-CNN) and open `CNN_BT_DEMO.ipynb` in Google Colab.
+
+### Step 2: Run the Notebook
+
+1. Open the notebook in Google Colab.
+2. Select a runtime from **Runtime → Change runtime type**. A GPU is optional for inference.
+3. Execute the notebook cells in order.
+4. Allow the notebook to download and load the trained model checkpoint from Hugging Face.
+5. Upload or provide a brain MRI image when prompted by the notebook.
+6. Run the prediction cell to view the model's output.
+
+The demo uses the pretrained checkpoint rather than requiring a complete training run.
+
+### Step 3: Test with an MRI Image
+
+Use an MRI image compatible with the model's expected input format. Follow the notebook's preprocessing and image-upload instructions to obtain a prediction.
+
+For reproducible testing, use sample images from the supported dataset or other appropriately sourced MRI images.
+
+## Project Resources
+
+| Resource | Description |
+|---|---|
+| [Demo Notebook](https://colab.research.google.com/github/aadubey1606/Brain-Tumour-Classification-using-CNN/blob/main/CNN_BT_DEMO.ipynb) | Interactive demonstration in Google Colab |
+| [GitHub Repository](https://github.com/aadubey1606/Brain-Tumour-Classification-using-CNN) | Source code and notebook |
+| [Hugging Face Dataset](https://huggingface.co/datasets/Sohaaam/Brain_Tumour_Curated) | Curated dataset used for model training |
+| [Hugging Face Model Repository](https://huggingface.co/Aayush1606/RESNET_18_FILE) | Hosted trained model checkpoint |
 
 ## Dataset
 
-The model is trained using the brain MRI dataset available for this project.
+The model was trained using the curated brain MRI dataset hosted at [Sohaaam/Brain_Tumour_Curated](https://huggingface.co/datasets/Sohaaam/Brain_Tumour_Curated).
 
-The dataset contains MRI images organized into class-specific categories. These images are used to train and evaluate the CNN model.
+The dataset provides the image data used during model development. Keeping the dataset hosted on Hugging Face makes it easier to access and reuse without including the full collection of images in the GitHub repository.
 
-**Dataset details:**
-- **Input:** Brain MRI images
-- **Data type:** Medical images
-- **Task:** Multiclass image classification
-- **Preprocessing:** Image resizing, normalization, and label encoding, as implemented in the notebook
-- **Data split:** As defined in the training notebook
+**Dataset:** `Sohaaam/Brain_Tumour_Curated`
 
-The exact class labels and dataset distribution depend on the dataset configuration used during training.
+**Platform:** Hugging Face Datasets
 
 ## Model Architecture
 
-The project uses a Convolutional Neural Network (CNN), which is designed to learn visual features directly from images.
+The project uses **ResNet-18**, a convolutional neural network architecture based on residual learning.
 
-The architecture consists of the following components, depending on the implementation:
+Its main components include:
 
-1. **Convolutional layers:** Extract features such as edges, textures, and structural patterns.
-2. **Activation functions:** Introduce non-linearity into the network.
-3. **Pooling layers:** Reduce spatial dimensions while retaining important features.
-4. **Flattening or feature aggregation:** Convert extracted features into a representation suitable for classification.
-5. **Dense layers:** Learn relationships between the extracted features.
-6. **Output layer:** Predict the class of the input MRI image.
+- Convolutional layers for extracting visual features from MRI images.
+- Residual connections that support the training of deeper networks.
+- Feature extraction layers that learn useful image representations.
+- A classification layer that produces scores for the supported classes.
 
-The network is trained using labelled MRI images to minimize classification loss and improve its ability to distinguish between the dataset's categories.
-
-## Workflow
-
-1. Load the brain MRI dataset.
-2. Preprocess the images and prepare class labels.
-3. Divide the dataset into training, validation, and/or test sets as configured.
-4. Define the CNN architecture.
-5. Train the model using the training data.
-6. Evaluate the model using the evaluation data.
-7. Provide an MRI image to obtain a predicted class.
+The trained checkpoint is hosted in the [Hugging Face model repository](https://huggingface.co/Aayush1606/RESNET_18_FILE) and is loaded by the demonstration notebook.
 
 ## Technologies Used
 
 - Python
-- TensorFlow/Keras or PyTorch, depending on the notebook implementation
-- NumPy
-- Matplotlib
-- Jupyter Notebook / Google Colab
+- PyTorch
+- Torchvision
+- Hugging Face Hub
+- Hugging Face Datasets
+- Google Colab
+- Jupyter Notebook
 
-## Project Structure
+## Repository Structure
 
 ```text
 Brain-Tumour-Classification-using-CNN/
 ├── CNN_BT_DEMO.ipynb
-├── Readme.md
 └── README.md
 ```
 
-The actual repository structure may differ depending on where the dataset, model files, and supporting scripts are stored.
+The trained checkpoint and curated dataset are hosted separately on Hugging Face, keeping the GitHub repository lightweight.
 
-## How to Run
+## Running Locally
 
-### 1. Clone the repository
+To run the project locally, clone the repository:
 
 ```bash
 git clone https://github.com/aadubey1606/Brain-Tumour-Classification-using-CNN.git
 cd Brain-Tumour-Classification-using-CNN
 ```
 
-### 2. Install the dependencies
-
-Install the libraries required by the notebook. For example, if the notebook uses TensorFlow:
+Install the dependencies required by the notebook and open it using Jupyter Notebook or JupyterLab.
 
 ```bash
-pip install tensorflow numpy matplotlib jupyter
-```
-
-If it uses PyTorch, install the appropriate PyTorch version instead.
-
-### 3. Open the notebook
-
-You can run the project in Google Colab or locally using Jupyter Notebook.
-
-```bash
+pip install torch torchvision huggingface_hub datasets pillow matplotlib jupyter
 jupyter notebook CNN_BT_DEMO.ipynb
 ```
 
-### 4. Load the dataset
-
-Ensure the dataset is available at the path expected by the notebook. Update the dataset path if necessary.
-
-### 5. Train and test the model
-
-Execute the notebook cells in order to preprocess the data, train the CNN, evaluate its performance, and test predictions on MRI images.
+Run the notebook cells in sequence. Ensure that the model-loading code points to the correct Hugging Face repository and checkpoint filename.
 
 ## Evaluation
 
-Model performance should be assessed using suitable classification metrics, including:
+The model should be evaluated using appropriate classification metrics, such as:
 
 - Accuracy
 - Precision
@@ -117,25 +115,20 @@ Model performance should be assessed using suitable classification metrics, incl
 - F1-score
 - Confusion matrix
 
-Add the actual evaluation results from the completed training run before publishing them in this section.
+Insert the actual measured results from the completed evaluation here. Results should be reported with the evaluation dataset and test procedure clearly identified.
 
 ## Limitations
 
-- Model performance depends on the quality, diversity, and class distribution of the training dataset.
-- Predictions may be affected by differences in MRI scanners, image quality, and preprocessing.
-- Performance on the training dataset does not guarantee generalization to unseen clinical data.
-- The model is intended for educational and research purposes and is not a substitute for professional medical diagnosis.
-
-## Future Improvements
-
-- Evaluate the model on an independent dataset.
-- Apply data augmentation to improve generalization.
-- Compare CNN performance with alternative architectures such as Vision Transformers.
-- Add Grad-CAM visualizations to highlight image regions influencing predictions.
-- Develop an interface for uploading MRI images and displaying predictions.
+- Predictions depend on the training data, image preprocessing, and model generalization.
+- Images from different scanners or datasets may produce different results.
+- Performance on the curated dataset does not establish clinical reliability.
+- The model is intended for educational and research purposes, not for independent medical diagnosis.
 
 ## Disclaimer
 
-This project is intended solely for educational and research purposes. It has not been established as a clinically validated diagnostic system and must not be used to make medical decisions.
+This project is intended for educational and research purposes only. Its predictions must not be used as a substitute for professional medical assessment or clinical diagnosis.
 
+## Contributors
 
+- Soham Kharatmal
+- Aayush Dubey
