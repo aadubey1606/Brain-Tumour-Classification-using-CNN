@@ -128,7 +128,3 @@ Insert the actual measured results from the completed evaluation here. Results s
 
 This project is intended for educational and research purposes only. Its predictions must not be used as a substitute for professional medical assessment or clinical diagnosis.
 
-## Contributors
-
-- Soham Kharatmal
-- Aayush Dubey
